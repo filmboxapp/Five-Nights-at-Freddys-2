@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> VER FIVE NIGHTS AT FREDDY'S 2 ONLINE</title>
+  <title>VER FIVE NIGHTS AT FREDDY'S 2 ONLINE</title>
   <style>
     body {
       background-color: #0d0d0d;
@@ -13,11 +13,35 @@
       padding: 0;
     }
     .container { max-width: 900px; margin: auto; padding: 16px; }
+
+    /* Botones */
+    .language-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .lang-btn {
+      background: #111;
+      border: 2px solid #e50914;
+      color: #e50914;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .lang-btn.active {
+      background: #e50914;
+      color: #fff;
+    }
+
     .video-container {
       background: #000; border-radius: 16px; overflow: hidden;
       box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+      margin-bottom: 20px;
     }
     iframe { width: 100%; height: 200px; border: none; }
+
     .info-box {
       background: #111; border-radius: 16px; padding: 16px; margin-top: 16px;
       display: flex; gap: 16px; align-items: flex-start;
@@ -29,13 +53,13 @@
       font-size: 1.2rem; 
       line-height: 1.3em;
       text-transform: uppercase;
-      white-space: normal;
-      word-break: break-word;
       overflow-wrap: anywhere;
     }
+
     .icons { display: flex; gap: 16px; margin-top: 4px; color: #ccc; font-size: 0.9rem; flex-wrap: wrap; }
     .icon-item { display: flex; align-items: center; gap: 6px; }
     .icon-item svg { width: 18px; height: 18px; fill: #e50914; }
+
     .synopsis {
       background: #111; border-radius: 16px; padding: 16px;
       margin-top: 16px; line-height: 1.5; font-size: 0.95rem; color: #ccc;
@@ -44,9 +68,19 @@
 </head>
 <body>
   <div class="container">
-    <div class="video-container">
-      <iframe src="https://moviedays.top/PQGpWt" allowfullscreen></iframe>
+
+    <!-- Botones de idioma -->
+    <div class="language-buttons">
+      <button class="lang-btn active" onclick="cambiarIdioma('latino')">LATINO 🇲🇽 </button>
+      <button class="lang-btn" onclick="cambiarIdioma('ingles')">INGLES 🇺🇸</button>
     </div>
+
+    <!-- Reproductor -->
+    <div class="video-container">
+      <iframe id="player" src="https://lzplayerfree.blogspot.com/?url=U2FsdGVkX18aIP3234B5nhPuMP%2FsgeymAyMz88a1HMSlQanTP%2Bt3P9DIs0kxThQuUyb%2Fjurz%2F1%2FawLGNSUSA3nSQLkDGSGEHcBA49Xl%2B0Kg%3D" allowfullscreen></iframe>
+    </div>
+
+    <!-- Información -->
     <div class="info-box">
       <img src="https://image.tmdb.org/t/p/original/bYdANgEjbb3L1k1KpprAeZ6a5HN.jpg" alt="Poster" class="poster">
       <div class="details">
@@ -67,7 +101,31 @@
         </div>
       </div>
     </div>
-    <div class="synopsis">Un año después de la pesadilla sobrenatural en Freddy Fazbear's Pizza, las historias sobre lo ocurrido allí se han convertido en una leyenda local extravagante, inspirando el primer Fazfest del pueblo. Sin saber la verdad, Abby se escapa para reencontrarse con Freddy, Bonnie, Chica y Foxy, lo que desencadena una serie de eventos aterradores que revelarán oscuros secretos sobre el verdadero origen de Freddy's y desatarán un horror olvidado durante décadas.</div>
+
+    <div class="synopsis">
+      Un año después de la pesadilla sobrenatural en Freddy Fazbear's Pizza, las historias sobre lo ocurrido allí se han convertido en una leyenda local extravagante, inspirando el primer Fazfest del pueblo. Sin saber la verdad, Abby se escapa para reencontrarse con Freddy, Bonnie, Chica y Foxy, lo que desencadena una serie de eventos aterradores que revelarán oscuros secretos sobre el verdadero origen de Freddy's y desatarán un horror olvidado durante décadas.
+    </div>
+
   </div>
+
+  <script>
+    function cambiarIdioma(idioma) {
+      const iframe = document.getElementById("player");
+      const botones = document.querySelectorAll(".lang-btn");
+
+      // cambiar iframe
+      if (idioma === "latino") {
+        iframe.src = "https://moviedays.top/PQGpWt"; // ESPAÑOL
+      } else {
+        iframe.src = "https://moviedays.top/PQGpWt"; // INGLÉS (pon tu link)
+      }
+
+      // cambiar estilo de botones
+      botones.forEach(btn => btn.classList.remove("active"));
+      if (idioma === "latino") botones[0].classList.add("active");
+      else botones[1].classList.add("active");
+    }
+  </script>
+
 </body>
 </html>
